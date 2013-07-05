@@ -1,18 +1,9 @@
-import os, re, urlparse
 import ttag
-from xml.etree import ElementTree
-
 from django import template
-from django.core.urlresolvers import reverse
-from django.contrib.sessions.backends.db import SessionStore
-from django.contrib.sessions.models import Session
-from django.template.defaulttags import URLNode, url
-from django.template import Template, Context, loader, RequestContext, Variable, TemplateSyntaxError
-from django.shortcuts import get_object_or_404, render_to_response
+from django.template import Template, Context
 
-from django.utils.encoding import force_unicode
-
-#from quiz.models import Quiz
+from ..models import Quiz
+from ..forms import CreateQuizForm
 
 
 register = template.Library()
@@ -26,15 +17,19 @@ class QuizTag(ttag.Tag):
     """
     name = ttag.BasicArg()        
     
-    def render(self, context):
+    def render(self, context):        
         data = self.resolve(context)
         name = _strip_quotes(data['name'])
         
+        request = context['request']
+
         quiz = Quiz.objects.get(name=name)
         
+        form = CreateQuizForm(request, quiz=quiz, user=request.user)
+
         ## load the header template
         t = template.loader.get_template("quiz/quiz.html")
-        c = Context({'quiz':quiz})
+        c = Context({'quiz':quiz, 'form':form})
         return t.render(c)
 
 

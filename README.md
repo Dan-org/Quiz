@@ -1,4 +1,19 @@
-Installation
+To use quizzes in the Loft
+-------------------
+
+- add the git repository to requirements
+- run pip
+- add 'quiz' to intalled apps
+- include quiz urls for ajax calls to work url(r'', include('quiz.urls')),
+- add_to_builtins('quiz.templatetags.quiz')  # for discourse tags to work
+
+in the templates:
+- {% load quiz %}
+- <script type="text/javascript" src="{{STATIC_URL}}js/quiz.js"></script>
+- {% quiz 'My Quiz Name' %}
+
+
+To Instal the demo
 -------------------
 Prerequisites for Mac OS:
 Make sure you have the XCode development environment and the Development Command Line Tools.  They can be downloaded from https://developer.apple.com/downloads/index.action, you need Xcode 4.6 or higher, and "Command Line Tools" for your version of your OS.

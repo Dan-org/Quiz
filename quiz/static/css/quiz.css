@@ -1,0 +1,76 @@
+/* Temporarry sass file for syllabus until Amy & Sergio can redesign. */
+
+
+.quiz-container {
+    border-style: solid;
+    border-color: #ccc;
+    border-width: 1px;
+    
+    padding: 6px;
+}
+
+.quiz-container .question{
+    border-style: solid;
+    border-color: #ccc;
+    border-width: 1px;
+
+    padding: 20px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+
+    background: #eee;
+}
+
+.quiz-container .answers{
+    border-style: solid;
+    border-color: #ccc;
+    border-width: 1px;
+
+    padding: 4px;
+}
+
+
+.quiz-container .answers .answer{
+    margin-top: 2px; 
+    margin-bottom: 2px;
+}
+
+.quiz-container .answers .answer input[type="radio"] {
+      display: none;
+}
+
+.quiz-container .answers .answer input[type="radio"] + label { 
+    display: block;
+    width: 95%;
+    //background: #eee;
+
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 12px;
+
+    border-left-style: solid;
+    border-left-width: 10px;
+    border-left-color: #bbb;
+}
+
+.quiz-container .answers .answer input[type="radio"]:checked + label {             
+    border-left-color: orange;
+}
+
+.quiz-container .answers .answer input[type="radio"]:hover + label {
+    border-left-color: #FFAA69;            
+}
+
+.quiz-container .feedback{
+    border-style: solid;
+    border-color: #ccc;
+    border-width: 1px;
+
+    padding: 12px;
+    margin-top: 12px;
+    margin-bottom: 12px;   
+
+    background: #eee;
+}
+
+

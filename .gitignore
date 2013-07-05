@@ -1,6 +1,7 @@
 .*
 *.pyc
 /sqlite.db*
+/db.sqlite3*
 /env
 /_static
 /static
