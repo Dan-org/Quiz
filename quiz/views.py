@@ -63,5 +63,5 @@ def ajax_submit_answer(request):
         answer.save()
         #print "saved!"
 
-    return HttpResponse( simplejson.dumps( results ), mimetype='application/json' )
+    return HttpResponse( simplejson.dumps( results ), content_type='application/json' )
 

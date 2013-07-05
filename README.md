@@ -3,13 +3,15 @@ To use quizzes in the Loft
 
 - add the git repository to requirements
 - run pip
+- run syncdb to add the quiz models
 - add 'quiz' to intalled apps
 - include quiz urls for ajax calls to work url(r'', include('quiz.urls')),
 - add_to_builtins('quiz.templatetags.quiz')  # for discourse tags to work
 
 in the templates:
 - {% load quiz %}
-- <script type="text/javascript" src="{{STATIC_URL}}js/quiz.js"></script>
+- <script type="text/javascript" src="{{STATIC_URL}}js/quiz.js"></script>  necessary for quiz to work
+- <link rel="stylesheet" href="{{STATIC_URL}}css/quiz.css"></script>   if you want the quiz styled
 - {% quiz 'My Quiz Name' %}
 
 
