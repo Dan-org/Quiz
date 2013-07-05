@@ -16,31 +16,6 @@ from django.core import serializers
 from django.forms.models import model_to_dict
 from django.utils import simplejson
 
-#from forms import AjaxForm
-
-
-# # so that discourse wil work
-# add_to_builtins('quiz.templatetags.quiz')
-
-# def quizzes(request):
-# 	quizzes = Quiz.objects.all()
-# 	return render(request, 'quiz/quizzes.html', locals())
-
-# def quiz(request, quiz_id):
-#     """
-#     Create a attempt on the quiz.
-#     """
-#     quiz = get_object_or_404(Quiz, pk=quiz_id) 
-
-#     form = CreateQuizForm(request, quiz=quiz, user=request.user)
-
-#     if form.is_valid():
-#         attempt = form.save(quiz)        
-#         #notify(critique.author, report, "feedback", critique=critique, report=report)
-#         return redirect("quiz_attempt", quiz.id)        
-#     #return render(request, "loft/reports/feedback.html", locals())
-#     return render(request, "quiz/hello_quiz.html", locals())
-
 
 
 def ajax_submit_answer(request):
@@ -61,7 +36,6 @@ def ajax_submit_answer(request):
         answer.answer = answer_key
         attempt.save()
         answer.save()
-        #print "saved!"
 
     return HttpResponse( simplejson.dumps( results ), content_type='application/json' )
 
