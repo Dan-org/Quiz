@@ -1,2 +1,2 @@
-recursive-include discourse/static *
-recursive-include discourse/templates *
+recursive-include quiz/static *
+recursive-include quiz/templates *
