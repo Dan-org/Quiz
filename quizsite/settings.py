@@ -10,6 +10,8 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+from os.path import join, normpath
+
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
@@ -97,5 +99,12 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.messages.context_processors.messages',
     'django.core.context_processors.request',
  
+)
+
+
+### FIXTURES ###
+# See: https://docs.djangoproject.com/en/dev/ref/settings/#std:setting-FIXTURE_DIRS
+FIXTURE_DIRS = (
+    normpath(join(BASE_DIR, 'laboratorysite/fixtures')),
 )
 
