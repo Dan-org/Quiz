@@ -1,5 +1,5 @@
 """
-Django settings for quizsite project.
+Django settings for example project.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/1.6/topics/settings/
@@ -39,7 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'quizsite',
+    'example',
     'quiz',
 )
 
@@ -52,9 +52,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'quizsite.urls'
+ROOT_URLCONF = 'example.urls'
 
-WSGI_APPLICATION = 'quizsite.wsgi.application'
+WSGI_APPLICATION = 'example.wsgi.application'
 
 
 # Database
