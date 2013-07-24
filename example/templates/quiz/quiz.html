@@ -9,7 +9,8 @@
 	{% endif %}
 	        
 	<!--<form action="." method="post">{% csrf_token %}   -->
-	<form method="get" action="/quiz/ajax/submit/" quiz="{{ quiz.pk }}" >
+	<!-- <form method="get" action="/quiz/ajax/submit/" quiz="{{ quiz.pk }}" > -->
+	<form method="get" action="{% url 'quiz_ajax_url' %}" quiz="{{ quiz.pk }}" >
 	    {% for question in form.questions %}	    
 	    {% with question.field as field %}
 	        <div class="question-panel" id='qp_{{ forloop.counter }}' >

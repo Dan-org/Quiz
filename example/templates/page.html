@@ -11,7 +11,10 @@
         <link rel="stylesheet" href="{{STATIC_URL}}css/quiz.css" >        
 
         <!-- need this for quiz to work -->
-        <script type="text/javascript" src="{{STATIC_URL}}js/quiz.js"></script>
+        <!--<script type="text/javascript" src="{{STATIC_URL}}js/quiz.js"></script>-->
+
+        <!--<script type="text/javascript" src="{{STATIC_URL}}js/quiz.js?quiz_ajax_url={% url 'quiz_ajax_url' %}"></script>-->
+        {% include "quiz/assets.html" %}
 
     </head>
     <body>

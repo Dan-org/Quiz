@@ -1,5 +1,27 @@
-$(document).ready(function() {
+// this function helps us get any parameters passed ot this script
+var scriptSource = (function() {
+	var scripts = document.getElementsByTagName('script');
+	return scripts[scripts.length - 1].src
+}());
 	
+// Utility function to convert "a=b&c=d" into { a:'b', c:'d' }
+function parseQueryString(queryString) {
+    var params = {};
+    if (queryString) {
+        var keyValues = queryString.split('&');
+        for (var i=0; i < keyValues.length; i++) {
+            var pair = keyValues[i].split('=');
+            params[pair[0]] = pair[1];
+        }
+    }
+    return params;
+}
+
+
+$(document).ready(function() {
+	var params 			= parseQueryString(scriptSource.split('?')[1]);
+	var quiz_ajax_url 	= params.quiz_ajax_url;
+
 	function select_question(question_panel) {        
 	    $('.question-panel').not(question_panel).hide();           // Hide the other panels. 
 	    question_panel.show();                                     // Show just the current panel.    
@@ -74,9 +96,11 @@ $(document).ready(function() {
 				'answer_key':answer_key,
             }, // get the form data}
             type: 'GET', // GET or POST
-            url: '/quiz/ajax/submitanswer/', // the file to call
+            //url: '/quiz/ajax/submitanswer/', // the file to call
+            url: quiz_ajax_url, 
+
             success: function(response) { // on success..
-                $(feedback_panel).html(response['feedback'])
+                $(feedback_panel).html(response['feedback']);
             },
             error: function(xhr, textStatus, errorThrown) {
             	alert("Please report this error: "+errorThrown+xhr.status+xhr.responseText);
