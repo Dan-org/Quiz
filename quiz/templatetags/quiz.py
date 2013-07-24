@@ -18,19 +18,23 @@ class QuizTag(ttag.Tag):
     name = ttag.BasicArg()        
     
     def render(self, context):        
-        data = self.resolve(context)
-        name = _strip_quotes(data['name'])
-        
-        request = context['request']
+        try:
+            data = self.resolve(context)
+            name = _strip_quotes(data['name'])
+            
+            request = context['request']
 
-        quiz = Quiz.objects.get(name=name)
-        
-        form = CreateQuizForm(request, quiz=quiz, user=request.user)
+            quiz = Quiz.objects.get(name=name)
+            
+            form = CreateQuizForm(request, quiz=quiz, user=request.user)
 
-        ## load the header template
-        t = template.loader.get_template("quiz/quiz.html")
-        c = Context({'quiz':quiz, 'form':form})
-        return t.render(c)
+            ## load the header template
+            t = template.loader.get_template("quiz/quiz.html")
+            c = Context({'quiz':quiz, 'form':form})
+            return t.render(c)
+        except:
+            return ""
+
 
 
 def _strip_quotes(arg):
