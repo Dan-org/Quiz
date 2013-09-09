@@ -18,7 +18,11 @@ function parseQueryString(queryString) {
 }
 
 
-$(document).ready(function() {
+
+
+
+function setupQuiz() {	
+	
 	var params 			= parseQueryString(scriptSource.split('?')[1]);
 	var quiz_ajax_url 	= params.quiz_ajax_url;
 
@@ -154,4 +158,6 @@ $(document).ready(function() {
 	$('.question-panel').each(setup_question);
 	$('.quiz').find('.feedback').html('');
 
-});
+}
+
+//$(document).ready(setupQuiz);

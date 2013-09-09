@@ -1,8 +1,5 @@
-
-
 <div class="quiz-container" repr="{% templatetag openblock %} quiz &quot;{{quiz.name}}&quot; {% templatetag closeblock %}">
-
-	<h3>{{ quiz.structure.title }}</h1>
+	<h2>{{ quiz.structure.title }}</h2>
 
 	{% if form.non_field_errors %}                
 	    <span class="help-inline">{{ form.non_field_errors }}</span>
@@ -14,36 +11,35 @@
 	    {% for question in form.questions %}	    
 	    {% with question.field as field %}
 	        <div class="question-panel" id='qp_{{ forloop.counter }}' >
-		        {% if 'radio' in field.as_widget %}
-			        {% if field.errors %}
-			            <span class="help-inline">{{ field.errors }}</span>
-			        {% endif %}
-			        <div class="question">{{field.label}}</div>
+	        {% if 'radio' in field.as_widget %}
+		        {% if field.errors %}
+				<span class="help-inline">{{ field.errors }}</span>
+		        {% endif %}
+		        <div class="section-title question"><span>Q.</span> {{field.label}}</div>
 
-			        <div class="answers">
-				        {% for radio in field %}
-				        <div class="answer" id="rs_{{forloop.counter}}" >
-				        	<input name="{{ radio.name }}" type="radio" id="q_{{forloop.parentloop.counter}}_radio_{{ radio.index }}" value={{ radio.choice_value }}></input>
-	    					<label for="q_{{forloop.parentloop.counter}}_radio_{{ radio.index }}">{{ radio.choice_label }}</label>
-	    				</div>
-				        {% endfor %}	            
-				    </div>
-		        {% endif %}        
+		        <div class="answers">
+			        {% for radio in field %}
+			        <div class="answer" id="rs_{{forloop.counter}}" >
+			        	<input name="{{ radio.name }}" type="radio" id="q_{{forloop.parentloop.counter}}_radio_{{ radio.index }}" value={{ radio.choice_value }}></input>
+    					<label for="q_{{forloop.parentloop.counter}}_radio_{{ radio.index }}">{{ radio.choice_label }}</label>
+    				</div>
+			        {% endfor %}	            
+			    </div>
+	        {% endif %}        
 
 
 		        <!-- <button type="submit" class="btn btn-primary">Save</button> -->
-
 		        <!-- feedback -->
+		        <h5>Feedback</h5>
 		        <div class="feedback">&nbsp;</div>
-
 		    	<p>
+		    	<!-- previous link -->
+				{% if not forloop.first %}
+		        	<a href="" id='pl_{{ forloop.counter }}' class="button">Previous</a>	    			
+		        {% endif %}
 			    <!-- next link -->
 		        {% if not forloop.last %}
-		        	<a href="" id='nl_{{ forloop.counter }}' >NEXT</a>	    			
-		        {% endif %}
-		        <!-- previous link -->
-				{% if not forloop.first %}
-		        	<a href="" id='pl_{{ forloop.counter }}' >PREVIOUS</a>	    			
+		        	<a href="" id='nl_{{ forloop.counter }}' class="button">Next</a>	    			
 		        {% endif %}
 		        </p>
 

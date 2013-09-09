@@ -7,6 +7,9 @@
         <link rel="stylesheet" href="{{STATIC_URL}}css/style.css">
         <script type="text/javascript" src="{{STATIC_URL}}jquery-1.9.0.min.js"></script>
 
+
+        
+
         <!-- default quiz styling -->
         <link rel="stylesheet" href="{{STATIC_URL}}css/quiz.css" >        
 
@@ -15,6 +18,11 @@
 
         <!--<script type="text/javascript" src="{{STATIC_URL}}js/quiz.js?quiz_ajax_url={% url 'quiz_ajax_url' %}"></script>-->
         {% include "quiz/assets.html" %}
+
+        <!--  want to run the setupQuiz scrip on load, but have to let the app decide how/where to call -->
+        <script type="text/javascript" >
+            $(document).ready(setupQuiz);
+        </script>
 
     </head>
     <body>
